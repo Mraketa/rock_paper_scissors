@@ -83,10 +83,9 @@ def input_faked_rock(prompt):
 # fixture capsys zachyti vsechno co se vypisuje na obrazovku - err i out. My pouzivame jen ten output, protoze error vypis tam nemame
 #muzu si psat vlastni fixtures - fixture muze brat jako argument dalsi fixture
     
-def test_full_game(capsys, monkeypatch):
-    monkeypatch.setattr('builtins.input', input_faked_rock)
+def test_full_game(capsys):
     
-    rps.main()
+    rps.main(input=input_faked_rock)
     
     captured = capsys.readouterr()
     assert 'rock, paper or scissors? ' in captured.out
