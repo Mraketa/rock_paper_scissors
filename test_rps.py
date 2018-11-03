@@ -1,4 +1,7 @@
 import rps
+import subprocess
+import sys
+
 # kdyz dam jen import rps, nacte mi to cele to RPS a tam jsou ty inputy, ktere mi nebudou fungovat
 
 
@@ -90,29 +93,20 @@ def test_full_game(capsys):
     captured = capsys.readouterr()
     assert 'rock, paper or scissors? ' in captured.out
     
+def test_wrong_play_results_in_repeated_question():
+    # tenhle subprocess mi to jako pousti v pythonu
+    # misto 'python' do toho subprocess.run muzu napsat sys.executable jako promennou a ten mi pusti ten samy python ve kterem to testuju
+    # u pythonu 3.7 je nastaveni encodingu vyresene jinak a nemusim ho tam dopisovat
+    cp = subprocess.run(['python', 'rps.py'],
+                    encoding='cp1250',
+                    stdout=subprocess.PIPE,
+                    input='dragon\nrock\n',
+                    check=True)
+    assert cp.stdout.count('rock, paper or scissors? ') == 2
+    # ocekavam ze otazka na rps se mi objevi jen jednou
+                 
     
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+ 
