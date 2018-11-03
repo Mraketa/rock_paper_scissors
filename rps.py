@@ -1,5 +1,7 @@
 import random
 
+# pridane dependencies na input (kdyz to bude zadavat clovek, tak se to provede, kdyz to bude delat test tak to bude zrat nas fake input)
+
 def input_human_play(input=input):
     play = input('rock, paper or scissors? ')
     while not is_valid_play(play):
