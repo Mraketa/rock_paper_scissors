@@ -1,6 +1,6 @@
 import random
 
-def input_human_play():
+def input_human_play(input=input):
     play = input('rock, paper or scissors? ')
     while not is_valid_play(play):
         play = input('rock, paper or scissors? ')
@@ -22,8 +22,8 @@ def evaluate_game(human, computer):
 
 # ------
 
-def main():
-    human = input_human_play()
+def main(input=input):
+    human = input_human_play(input)
     computer = generate_computer_play()
 
     print('Computer plays: ', computer)
